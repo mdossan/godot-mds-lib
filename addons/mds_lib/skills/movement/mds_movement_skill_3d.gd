@@ -23,6 +23,9 @@ var jump_in_progress: bool = false
 var jump_offset: float = 0.0
 
 func _input(event: InputEvent) -> void:
+	if not is_multiplayer_authority():
+		return
+	
 	if event.is_action_pressed(up_action):
 		forward_input = true
 	elif event.is_action_released(up_action):
@@ -49,7 +52,7 @@ func _input(event: InputEvent) -> void:
 		jump_input = false
 
 func _physics_process(delta: float):
-	if multiplayer.get_unique_id() != get_multiplayer_authority():
+	if not is_multiplayer_authority():
 		return
 	
 	var backward: Vector3 = Vector3.ZERO
