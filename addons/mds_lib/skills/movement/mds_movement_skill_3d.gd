@@ -1,5 +1,6 @@
 class_name MdsMovementSkill3D extends Node3D
 
+@export var disabled: bool = false
 @export var parent: CharacterBody3D
 @export var speed: int = 10
 @export var jump_cuvre: Curve = preload("res://addons/mds_lib/skills/movement/default_jump_curve.tres")
@@ -53,6 +54,9 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float):
 	if not is_multiplayer_authority():
+		return
+	
+	if disabled:
 		return
 	
 	var backward: Vector3 = Vector3.ZERO
