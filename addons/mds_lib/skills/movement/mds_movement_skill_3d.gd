@@ -1,6 +1,7 @@
 class_name MdsMovementSkill3D extends Node3D
 
 @export var disabled: bool = false
+@export var gravity_enabled: bool = false
 @export var parent: CharacterBody3D
 @export var speed: int = 10
 @export var jump_cuvre: Curve = preload("res://addons/mds_lib/skills/movement/default_jump_curve.tres")
@@ -64,6 +65,7 @@ func _physics_process(delta: float):
 	var right: Vector3 = Vector3.ZERO
 	var left: Vector3 = Vector3.ZERO
 	var up: Vector3 = Vector3.ZERO
+	var gravity: Vector3 = Vector3.ZERO
 	
 	if forward_input:
 		forward = -parent.global_basis.z
@@ -78,6 +80,9 @@ func _physics_process(delta: float):
 		jump_in_progress = true;
 		jump_input = false
 	
+	if gravity_enabled and not jump_in_progress and not parent.is_on_floor():
+		gravity = Vector3.DOWN * 10.0
+	
 	if jump_in_progress:
 		var jump_curve_force = jump_cuvre.sample(jump_offset)
 		jump_offset += delta * jump_speed
@@ -85,6 +90,7 @@ func _physics_process(delta: float):
 		if jump_offset >= 1.0:
 			jump_in_progress = false
 	elif !parent.is_on_floor():
+		# Fall is too floaty
 		var jump_curve_force = jump_cuvre.sample(jump_offset)
 		jump_offset -= delta * jump_speed
 		up = -parent.global_basis.y * jump_curve_force * jump_force
@@ -92,7 +98,7 @@ func _physics_process(delta: float):
 		jump_in_progress = false
 		jump_offset = 0.0
 	
-	var target_velocity = (forward + backward + left + right).normalized() * speed + up
+	var target_velocity = (forward + backward + left + right + gravity).normalized() * speed + up
 	parent.velocity = target_velocity
 	# TODO | WARNING
 	# Maybe the move and slide part should not be done here
