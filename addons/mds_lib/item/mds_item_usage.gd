@@ -1,6 +1,4 @@
-@abstract
-class_name MdsItemUsage
-extends Resource
+@abstract class_name MdsItemUsage extends Resource
 
 @abstract
-func use(item: MdsItem3D, inventory: MdsInventoryBehavior3D)
+func use(item: MdsItem3D)

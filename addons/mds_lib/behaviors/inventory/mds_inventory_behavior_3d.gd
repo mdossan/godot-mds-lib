@@ -32,7 +32,7 @@ func _input(event: InputEvent) -> void:
 	var item: MdsItem3D = selected_item.get_meta(MdsItem3D.META)
 	if event.is_action_pressed("use") and item.item_resource.usage:
 		item.used.emit(item, self)
-		item.item_resource.usage.use(item, self)
+		item.item_resource.usage.use(item)
 
 func pick_item(node: Node3D) -> void:
 	if get_children().size() >= max_item:
