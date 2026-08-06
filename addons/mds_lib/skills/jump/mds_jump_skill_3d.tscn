@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cshbyiyy1bjh"]
+
+[ext_resource type="Script" uid="uid://ckkguvkpx3yrx" path="res://addons/mds_lib/skills/jump/mds_jump_skill_3d.gd" id="1_p20fh"]
+
+[node name="MdsJumpSkill3D" type="Node3D" unique_id=455328140]
+script = ExtResource("1_p20fh")
