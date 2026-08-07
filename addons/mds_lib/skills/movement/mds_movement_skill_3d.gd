@@ -1,57 +1,46 @@
 class_name MdsMovementSkill3D extends Node3D
 
-@export var disabled: bool = false
-@export var gravity_enabled: bool = false
+signal direction_changed(x: float, y: float, z: float)
+
 @export var parent: CharacterBody3D
 @export var speed: int = 10
-@export var jump_cuvre: Curve = preload("res://addons/mds_lib/skills/movement/default_jump_curve.tres")
-@export var jump_force: float = 10
-@export var jump_speed: float = 1
+@export var disabled: bool = false
 
-@export var jump_action = "jump"
+@export_group("Action Names")
 @export var up_action = "up"
 @export var down_action = "down"
 @export var left_action = "left"
 @export var right_action = "right"
 
 var direction = Vector3.ZERO
-var backward_input: bool = false
-var forward_input: bool = false
-var right_input: bool = false
-var left_input: bool = false
-var jump_input: bool = false
-
-var jump_in_progress: bool = false
-var jump_offset: float = 0.0
+var backward_input: float = 0.0
+var forward_input: float = 0.0
+var right_input: float = 0.0
+var left_input: float = 0.0
 
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
 		return
 	
 	if event.is_action_pressed(up_action):
-		forward_input = true
+		forward_input = 1.0
 	elif event.is_action_released(up_action):
-		forward_input = false
+		forward_input = 0.0
 	
 	if event.is_action_pressed(down_action):
-		backward_input = true
+		backward_input = 1.0
 	elif event.is_action_released(down_action):
-		backward_input = false
+		backward_input = 0.0
 	
 	if event.is_action_pressed(right_action):
-		right_input = true
+		right_input = 1.0
 	elif event.is_action_released(right_action):
-		right_input = false
+		right_input = 0.0
 		
 	if event.is_action_pressed(left_action):
-		left_input = true
+		left_input = 1.0
 	elif event.is_action_released(left_action):
-		left_input = false
-	
-	if event.is_action_pressed(jump_action):
-		jump_input = true
-	elif event.is_action_released(jump_action):
-		jump_input = false
+		left_input = 0.0
 
 func _physics_process(delta: float):
 	if not is_multiplayer_authority():
@@ -65,42 +54,20 @@ func _physics_process(delta: float):
 	var right: Vector3 = Vector3.ZERO
 	var left: Vector3 = Vector3.ZERO
 	var up: Vector3 = Vector3.ZERO
-	var gravity: Vector3 = Vector3.ZERO
 	
-	if forward_input:
+	if forward_input > 0.0:
 		forward = -parent.global_basis.z
-	if backward_input:
+	if backward_input > 0.0:
 		backward = parent.global_basis.z
-	if right_input:
+	if right_input > 0.0:
 		right = parent.global_basis.x
-	if left_input:
+	if left_input > 0.0:
 		left = -parent.global_basis.x
 	
-	if jump_input and parent.is_on_floor():
-		jump_in_progress = true;
-		jump_input = false
-	
-	if gravity_enabled and not jump_in_progress and not parent.is_on_floor():
-		gravity = Vector3.DOWN * 10.0
-	
-	if jump_in_progress:
-		var jump_curve_force = jump_cuvre.sample(jump_offset)
-		jump_offset += delta * jump_speed
-		up = parent.global_basis.y * jump_curve_force * jump_force
-		if jump_offset >= 1.0:
-			jump_in_progress = false
-	elif !parent.is_on_floor():
-		# Fall is too floaty
-		var jump_curve_force = jump_cuvre.sample(jump_offset)
-		jump_offset -= delta * jump_speed
-		up = -parent.global_basis.y * jump_curve_force * jump_force
-	else:
-		jump_in_progress = false
-		jump_offset = 0.0
-	
-	var target_velocity = (forward + backward + left + right + gravity).normalized() * speed + up
-	parent.velocity = target_velocity
-	# TODO | WARNING
-	# Maybe the move and slide part should not be done here
-	# it can maybe conflict with other node impacating physics' stuffs
-	parent.move_and_slide()
+	var target_velocity = (forward + backward + left + right).normalized() * speed + up
+	parent.velocity += target_velocity
+	direction_changed.emit(
+		right_input - left_input,
+		0,
+		forward_input - backward_input,
+	)
