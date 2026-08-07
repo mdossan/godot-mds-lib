@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c2234t62dmne2"]
+
+[ext_resource type="Script" uid="uid://bug6od6p0x2j7" path="res://addons/mds_lib/skills/camera_control/mds_camera_control_skill_3d.gd" id="1_7rsna"]
+
+[node name="MdsCameraControlSkill3D" type="Node3D" unique_id=82876333]
+script = ExtResource("1_7rsna")

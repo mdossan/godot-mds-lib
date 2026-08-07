@@ -1,9 +1,8 @@
-class_name MdsCameraControl
-extends Node3D
+class_name MdsCameraControlSkill3D extends Node3D
 
-@export var sensitivity: float = 0.5
 @export var node_vertical: Node3D
 @export var node_horizontal: Node3D
+@export var sensitivity: float = 0.5
 @export var disabled: bool = false
 
 var current_rot = Vector2.ZERO
