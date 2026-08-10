@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cobtkr1ywvl8l"]
 
 [ext_resource type="Script" uid="uid://bqll3fqjmr547" path="res://tests/skills/camera_control/test_camera_control.gd" id="1_qj7q5"]
-[ext_resource type="PackedScene" uid="uid://c2234t62dmne2" path="res://addons/mds_lib/skills/camera_control/camera_control.tscn" id="2_wb8ic"]
+[ext_resource type="PackedScene" uid="uid://c2234t62dmne2" path="res://addons/mds_lib/skills/camera_control/mds_camera_control_skill_3d.tscn" id="2_wb8ic"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qj7q5"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
