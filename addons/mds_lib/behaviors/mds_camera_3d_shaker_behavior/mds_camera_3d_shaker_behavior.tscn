@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bcqqkc0gwpcrb"]
+
+[ext_resource type="Script" uid="uid://cgipc3p6vwfgi" path="res://addons/mds_lib/behaviors/mds_camera_3d_shaker_behavior/mds_camera_3d_shaker_behavior.gd" id="1_5q5ms"]
+
+[node name="MdsCamera3dShakerBehavior" type="Node3D" unique_id=2120734624]
+script = ExtResource("1_5q5ms")
+
+[node name="ShakeTimer" type="Timer" parent="." unique_id=461277314]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="ShakeTimer" to="." method="_on_shake_timer_timeout"]
