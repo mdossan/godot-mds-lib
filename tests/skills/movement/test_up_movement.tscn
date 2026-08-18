@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://geeddx1ugttx" path="res://addons/mds_test/mds_test_scene.tscn" id="1_heiw1"]
 [ext_resource type="Script" uid="uid://d2stnrr8hlrrj" path="res://tests/skills/movement/test_up_movement.gd" id="2_qbkwi"]
 [ext_resource type="PackedScene" uid="uid://iogt3j27eyfc" path="res://addons/mds_lib/skills/movement/mds_movement_skill_3d.tscn" id="3_kpdih"]
+[ext_resource type="PackedScene" uid="uid://dawqenghjtk1d" path="res://addons/mds_lib/behaviors/mds_velocity_reset_behavior_3d/mds_velocity_reset_behavior_3d.tscn" id="3_oppms"]
+[ext_resource type="PackedScene" uid="uid://cp2swjl3mek4k" path="res://addons/mds_lib/behaviors/apply_velocity_behavior_3d/mds_apply_velocity_behavior_3d.tscn" id="4_kpdih"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oppms"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -43,5 +45,11 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" index="1" unique_id=1425008167]
 shape = SubResource("CapsuleShape3D_knqm2")
 
-[node name="MdsMovementSkill3D" parent="CharacterBody3D" index="2" unique_id=1619624148 node_paths=PackedStringArray("parent") instance=ExtResource("3_kpdih")]
+[node name="VelocityResetBehavior3D" parent="CharacterBody3D" index="2" unique_id=1168414234 node_paths=PackedStringArray("character_body_3d") instance=ExtResource("3_oppms")]
+character_body_3d = NodePath("..")
+
+[node name="MdsMovementSkill3D" parent="CharacterBody3D" index="3" unique_id=1619624148 node_paths=PackedStringArray("parent") instance=ExtResource("3_kpdih")]
 parent = NodePath("..")
+
+[node name="MdsApplyVelocityBehavior3D" parent="CharacterBody3D" index="4" unique_id=780488472 node_paths=PackedStringArray("character_body_3d") instance=ExtResource("4_kpdih")]
+character_body_3d = NodePath("..")
