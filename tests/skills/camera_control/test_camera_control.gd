@@ -16,7 +16,7 @@ func test() -> void:
 	assert_eq(left_box_is_visible, true, "Left box should be visible")
 	assert_eq(bottom_box_is_visible, false, "Bottom box should not be visible")
 	input_mouse(32, 0) # Reset to initial position
-	input_mouse(0, 32)
+	input_mouse(0, 64)
 	await wait_physics_frames(10)
 	assert_eq(right_box_is_visible, false, "Right box should not be visible")
 	assert_eq(left_box_is_visible, false, "Left box should not be visible")
