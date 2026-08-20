@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c4mm1g7rkhpsi"]
+
+[ext_resource type="Script" uid="uid://157w8snom8ma" path="res://addons/mds_lib/behaviors/mds_dash/mds_dash.gd" id="1_nomh4"]
+
+[node name="MdsDash" type="Node3D" unique_id=870924042]
+script = ExtResource("1_nomh4")
