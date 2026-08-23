@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://da8ggr85kpinw"]
+
+[ext_resource type="Script" uid="uid://cyue6rcbwvmqm" path="res://tests/life/test_life_default.gd" id="1_a0eex"]
+[ext_resource type="PackedScene" uid="uid://kjwy6wrae2bm" path="res://addons/mds_lib/life/life.tscn" id="2_tkyyg"]
+
+[node name="TestLifeDefault" type="Node" unique_id=670582860]
+script = ExtResource("1_a0eex")
+
+[node name="Life" parent="." unique_id=1460475209 node_paths=PackedStringArray("parent") instance=ExtResource("2_tkyyg")]
+unique_name_in_owner = true
+parent = NodePath("..")

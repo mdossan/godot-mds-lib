@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cky8gpjnutcpu"]
+
+[ext_resource type="Script" uid="uid://dlq6twr0cp1w7" path="res://tests/life/test_life_heal.gd" id="1_k4edv"]
+[ext_resource type="PackedScene" uid="uid://kjwy6wrae2bm" path="res://addons/mds_lib/life/life.tscn" id="2_jsruw"]
+
+[node name="TestLifeHeal" type="Node" unique_id=670582860]
+script = ExtResource("1_k4edv")
+
+[node name="Life" parent="." unique_id=1460475209 node_paths=PackedStringArray("parent") instance=ExtResource("2_jsruw")]
+unique_name_in_owner = true
+parent = NodePath("..")
+life = 80.0
+
+[connection signal="heal_received" from="Life" to="." method="_on_life_heal_received"]

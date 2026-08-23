@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://kjwy6wrae2bm"]
-
-[ext_resource type="Script" uid="uid://c8gndawi3b1nj" path="res://addons/mds_lib/behaviors/life/mds_life_behavior.gd" id="1_rxcfj"]
-
-[node name="MdsLifeBehavior" type="Node" unique_id=1460475209]
-script = ExtResource("1_rxcfj")

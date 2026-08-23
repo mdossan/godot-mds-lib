@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://sbx10ikooqej"]
+
+[ext_resource type="Script" uid="uid://dx72cawhlh3bs" path="res://tests/life/test_life_take_damage.gd" id="1_05nip"]
+[ext_resource type="PackedScene" uid="uid://kjwy6wrae2bm" path="res://addons/mds_lib/life/life.tscn" id="2_uygtp"]
+
+[node name="TestLifeTakeDamage" type="Node" unique_id=670582860]
+script = ExtResource("1_05nip")
+
+[node name="Life" parent="." unique_id=1460475209 node_paths=PackedStringArray("parent") instance=ExtResource("2_uygtp")]
+unique_name_in_owner = true
+parent = NodePath("..")
+
+[connection signal="damage_taken" from="Life" to="." method="_on_life_damage_taken"]

@@ -1,21 +1,17 @@
-class_name MdsLifeBehavior
-extends Node
+class_name MdsLife extends Node
 
-static var meta = "mds_life_behavior"
+static var META = "mds_life"
 
 signal damage_taken(amount: float, remaining_life: float)
-signal heal_taken(amount: float, remaining_life: float)
+signal heal_received(amount: float, remaining_life: float)
 signal dead()
 
 @export var parent: Node
-@export var max_life = 100.0
-@export var start_life = 100.0
-
-var life = start_life
+@export var max_life: float = 100.0
+@export var life: float = 100.0
 
 func _ready() -> void:
-	life = start_life
-	parent.set_meta(meta, self)
+	parent.set_meta(META, self)
 
 func take_damage(amount_of_damage: float):
 	life = max(life - amount_of_damage, 0.0)
@@ -25,5 +21,6 @@ func take_damage(amount_of_damage: float):
 		damage_taken.emit(amount_of_damage, life)
 
 func heal(amount_to_heal: float):
+	var previous_life: float = life
 	life = min(life + amount_to_heal, max_life)
-	heal_taken.emit(amount_to_heal, life)
+	heal_received.emit(life - previous_life, life)
