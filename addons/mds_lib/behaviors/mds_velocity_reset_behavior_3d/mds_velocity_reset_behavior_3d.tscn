@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://dawqenghjtk1d"]
-
-[ext_resource type="Script" uid="uid://btbhqb811xlf8" path="res://addons/mds_lib/behaviors/mds_velocity_reset_behavior_3d/mds_velocity_reset_behavior_3d.gd" id="1_jqqsy"]
-
-[node name="VelocityResetBehavior3D" type="Node3D" unique_id=1168414234]
-script = ExtResource("1_jqqsy")
