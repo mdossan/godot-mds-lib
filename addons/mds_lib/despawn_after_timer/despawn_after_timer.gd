@@ -1,4 +1,4 @@
-class_name MdsDespawnAfterTimerBehavior extends Node
+class_name MdsDespawnAfterTimer extends Node
 
 signal despawned
 
@@ -7,8 +7,6 @@ signal despawned
 
 func _ready() -> void:
 	%Timer.wait_time = despawn_delay
-
-func despawn():
 	%Timer.start()
 
 func _on_timer_timeout() -> void:

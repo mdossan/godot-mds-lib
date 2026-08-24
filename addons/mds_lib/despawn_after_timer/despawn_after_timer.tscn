@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://yqbkh72jbxij"]
 
-[ext_resource type="Script" uid="uid://ce4ojeo6ktvjm" path="res://addons/mds_lib/behaviors/despawn_after_timer/mds_despawn_after_timer_behavior.gd" id="1_qoaco"]
+[ext_resource type="Script" uid="uid://ce4ojeo6ktvjm" path="res://addons/mds_lib/despawn_after_timer/despawn_after_timer.gd" id="1_qoaco"]
 
-[node name="MdsDespawnAfterTimerBehavior" type="Node" unique_id=1199062149]
+[node name="DespawnAfterTimer" type="Node" unique_id=1199062149]
 script = ExtResource("1_qoaco")
 
 [node name="Timer" type="Timer" parent="." unique_id=2138714236]
