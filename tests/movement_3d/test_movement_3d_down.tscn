@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://cihx6jk58q0ug"]
+[gd_scene format=3 uid="uid://cmbm84oul45y1"]
 
-[ext_resource type="PackedScene" uid="uid://geeddx1ugttx" path="res://addons/mds_test/mds_test_scene.tscn" id="1_727ab"]
-[ext_resource type="Script" uid="uid://cjd3ejnjkorv4" path="res://tests/skills/movement/test_movement_3d_right.gd" id="2_727ab"]
-[ext_resource type="PackedScene" uid="uid://iogt3j27eyfc" path="res://addons/mds_lib/movement_3d/movement_3d.tscn" id="3_lxqbk"]
+[ext_resource type="PackedScene" uid="uid://geeddx1ugttx" path="res://addons/mds_test/mds_test_scene.tscn" id="1_ukp83"]
+[ext_resource type="Script" uid="uid://dcgkhrranspgu" path="res://tests/movement_3d/test_movement_3d_down.gd" id="2_ukp83"]
+[ext_resource type="PackedScene" uid="uid://iogt3j27eyfc" path="res://addons/mds_lib/movement_3d/movement_3d.tscn" id="3_fb1m5"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_rsrvd"]
 
@@ -18,8 +18,8 @@ background_mode = 2
 sky = SubResource("Sky_6nk7g")
 tonemap_mode = 2
 
-[node name="TestMovement3DRight" unique_id=2082957231 instance=ExtResource("1_727ab")]
-script = ExtResource("2_727ab")
+[node name="TestMovement3DDown" unique_id=2082957231 instance=ExtResource("1_ukp83")]
+script = ExtResource("2_ukp83")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." index="0" unique_id=2119019837]
 unique_name_in_owner = true
@@ -28,7 +28,7 @@ unique_name_in_owner = true
 mesh = SubResource("CapsuleMesh_rsrvd")
 skeleton = NodePath("../..")
 
-[node name="MdsMovement3D" parent="CharacterBody3D" index="1" unique_id=1619624148 node_paths=PackedStringArray("parent") instance=ExtResource("3_lxqbk")]
+[node name="Movement3D" parent="CharacterBody3D" index="1" unique_id=1619624148 node_paths=PackedStringArray("parent") instance=ExtResource("3_fb1m5")]
 parent = NodePath("..")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1" unique_id=1470951901]
