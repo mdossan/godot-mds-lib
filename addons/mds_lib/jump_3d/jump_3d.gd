@@ -1,4 +1,4 @@
-class_name MdsJumpSkill3D extends Node3D
+class_name MdsJump3D extends Node3D
 
 signal jump_started
 signal jump_ended
@@ -6,7 +6,7 @@ signal jump_ended
 @export var target_character_body_3d: CharacterBody3D
 
 @export_group("Jump Config")
-@export var jump_curve: Curve = preload("res://addons/mds_lib/skills/jump/default_jump_curve.tres")
+@export var jump_curve: Curve = preload("res://addons/mds_lib/jump/default_jump_curve.tres")
 @export var jump_force: float = 150
 @export var jump_speed: float = 1.8
 @export var jump_action: String = "jump"
@@ -51,7 +51,8 @@ func _physics_process(_delta: float) -> void:
 	var sample: float = jump_curve.sample(jump_time)
 	var jump_vector: float = (sample - jump_last_sample) * jump_release_offset
 	var up_direction: Vector3 = target_character_body_3d.global_basis.y
-	target_character_body_3d.velocity += up_direction * jump_vector * jump_force
+	target_character_body_3d.velocity = up_direction * jump_vector * jump_force
+	target_character_body_3d.move_and_slide()
 	jump_last_sample = sample
 	jump_in_progress = true
 	if jump_time >= 1:

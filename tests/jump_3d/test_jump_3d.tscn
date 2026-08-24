@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bn5mnc4v6vxhg"]
+
+[ext_resource type="PackedScene" uid="uid://geeddx1ugttx" path="res://addons/mds_test/mds_test_scene.tscn" id="1_bwe6s"]
+[ext_resource type="Script" uid="uid://cqta4vppfve4g" path="res://tests/jump_3d/test_jump_3d.gd" id="2_jo6hl"]
+[ext_resource type="PackedScene" uid="uid://cshbyiyy1bjh" path="res://addons/mds_lib/jump_3d/jump_3d.tscn" id="3_b03gt"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yd21b"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aknmq"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_jv5sn"]
+sky_material = SubResource("ProceduralSkyMaterial_aknmq")
+
+[sub_resource type="Environment" id="Environment_64ysl"]
+background_mode = 2
+sky = SubResource("Sky_jv5sn")
+tonemap_mode = 2
+
+[node name="TestJump" unique_id=2082957231 instance=ExtResource("1_bwe6s")]
+script = ExtResource("2_jo6hl")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." index="0" unique_id=185863336]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" index="0" unique_id=307750535]
+mesh = SubResource("CapsuleMesh_yd21b")
+
+[node name="Jump3D" parent="CharacterBody3D" index="1" unique_id=455328140 node_paths=PackedStringArray("target_character_body_3d") instance=ExtResource("3_b03gt")]
+target_character_body_3d = NodePath("..")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1" unique_id=1940994221]
+environment = SubResource("Environment_64ysl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="2" unique_id=970763188]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." index="3" unique_id=1879683472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1701436, 5.273247)
