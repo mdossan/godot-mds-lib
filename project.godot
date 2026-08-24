@@ -22,16 +22,7 @@ config/icon="uid://cuqtsup3i0fm5"
 
 [file_customization]
 
-folder_colors={
-"res://addons/mds_lib/behaviors/": "green",
-"res://addons/mds_lib/behaviors/despawn_after_timer/": "green",
-"res://addons/mds_lib/behaviors/inventory/": "green",
-"res://addons/mds_lib/interaction/": "yellow",
-"res://addons/mds_lib/item/": "purple",
-"res://addons/mds_lib/skills/": "orange",
-"res://tests/behaviors/": "green",
-"res://tests/skills/": "orange"
-}
+folder_colors={}
 
 [input]
 
