@@ -6,7 +6,7 @@ signal jump_ended
 @export var target_character_body_3d: CharacterBody3D
 
 @export_group("Jump Config")
-@export var jump_curve: Curve = preload("res://addons/mds_lib/jump/default_jump_curve.tres")
+@export var jump_curve: Curve = preload("res://addons/mds_lib/jump_3d/default_jump_curve.tres")
 @export var jump_force: float = 150
 @export var jump_speed: float = 1.8
 @export var jump_action: String = "jump"
