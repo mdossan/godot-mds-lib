@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://iogt3j27eyfc"]
+
+[ext_resource type="Script" uid="uid://dgs88i4hbnjvy" path="res://addons/mds_lib/movement_3d/movement_3d.gd" id="1_4bacj"]
+
+[node name="Movement3D" type="Node3D" unique_id=266879850]
+script = ExtResource("1_4bacj")

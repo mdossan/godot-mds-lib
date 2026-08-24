@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://drtoo3begk1xd"]
 
-[ext_resource type="Script" uid="uid://dgs88i4hbnjvy" path="res://addons/mds_lib/skills/movement/mds_movement_skill_3d.gd" id="1_f38i8"]
+[ext_resource type="Script" uid="uid://dgs88i4hbnjvy" path="res://addons/mds_lib/movement_3d/movement_3d.gd" id="1_f38i8"]
 [ext_resource type="Script" uid="uid://ckkguvkpx3yrx" path="res://addons/mds_lib/skills/jump/mds_jump_skill_3d.gd" id="2_uqocf"]
 [ext_resource type="Script" uid="uid://bug6od6p0x2j7" path="res://addons/mds_lib/skills/camera_control/mds_camera_control_skill_3d.gd" id="3_uqocf"]
 [ext_resource type="Script" uid="uid://cdwf7sm71s6tu" path="res://addons/mds_lib/behaviors/apply_velocity_behavior_3d/mds_apply_velocity_behavior_3d.gd" id="4_bw2xn"]

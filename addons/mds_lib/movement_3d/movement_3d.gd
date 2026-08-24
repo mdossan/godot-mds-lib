@@ -1,4 +1,4 @@
-class_name MdsMovementSkill3D extends Node3D
+class_name MdsMovement3D extends Node3D
 
 signal direction_changed(x: float, y: float, z: float)
 
@@ -53,7 +53,6 @@ func _physics_process(delta: float):
 	var forward: Vector3 = Vector3.ZERO
 	var right: Vector3 = Vector3.ZERO
 	var left: Vector3 = Vector3.ZERO
-	var up: Vector3 = Vector3.ZERO
 	
 	if forward_input > 0.0:
 		forward = -parent.global_basis.z
@@ -64,8 +63,9 @@ func _physics_process(delta: float):
 	if left_input > 0.0:
 		left = -parent.global_basis.x
 	
-	var target_velocity = (forward + backward + left + right).normalized() * speed + up
-	parent.velocity += target_velocity
+	var target_velocity = (forward + backward + left + right).normalized() * speed
+	parent.velocity = target_velocity
+	parent.move_and_slide()
 	direction_changed.emit(
 		right_input - left_input,
 		0,

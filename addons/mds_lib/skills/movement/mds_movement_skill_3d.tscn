@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://iogt3j27eyfc"]
-
-[ext_resource type="Script" uid="uid://dgs88i4hbnjvy" path="res://addons/mds_lib/skills/movement/mds_movement_skill_3d.gd" id="1_4bacj"]
-
-[node name="MdsMovementSkill3D" type="Node3D"]
-script = ExtResource("1_4bacj")
