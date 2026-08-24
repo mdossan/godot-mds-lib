@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://cp2swjl3mek4k"]
-
-[ext_resource type="Script" uid="uid://cdwf7sm71s6tu" path="res://addons/mds_lib/behaviors/apply_velocity_behavior_3d/mds_apply_velocity_behavior_3d.gd" id="1_wok1r"]
-
-[node name="MdsApplyVelocityBehavior3D" type="Node3D" unique_id=780488472]
-script = ExtResource("1_wok1r")
