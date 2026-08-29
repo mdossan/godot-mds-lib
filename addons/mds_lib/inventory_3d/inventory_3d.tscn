@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dd0bh8u8kch63"]
+
+[ext_resource type="Script" uid="uid://dtb1mc7vlphi6" path="res://addons/mds_lib/inventory_3d/inventory_3d.gd" id="1_sw85r"]
+
+[node name="Inventory3D" type="Node3D" unique_id=1167311361]
+script = ExtResource("1_sw85r")
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

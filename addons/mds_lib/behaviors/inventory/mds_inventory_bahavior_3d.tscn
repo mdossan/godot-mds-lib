@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd0bh8u8kch63"]
-
-[ext_resource type="Script" uid="uid://dtb1mc7vlphi6" path="res://addons/mds_lib/behaviors/inventory/mds_inventory_behavior_3d.gd" id="1_ok8gk"]
-
-[node name="MdsInventoryBehavior3D" type="Node3D"]
-script = ExtResource("1_ok8gk")
-
-[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

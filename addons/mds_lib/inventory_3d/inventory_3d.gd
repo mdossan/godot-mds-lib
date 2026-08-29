@@ -1,6 +1,6 @@
-@tool
-class_name MdsInventoryBehavior3D
-extends Node3D
+class_name MdsInventory3D extends Node3D
+
+static var META: String = "mds_inventory_3d"
 
 signal new_item_in_inventory(new_item: MdsItem3D)
 signal item_dropped
@@ -12,7 +12,7 @@ signal item_dropped
 		update_configuration_warnings()
 @export var spawner: MdsNode3DSpawner
 @export var world_item_spawner: MdsNode3DSpawner
-@export var max_item: int = 1
+@export var max_size: int = 1
 var items: Dictionary[String, MdsItem3D]
 var selected_item: Node3D
 
@@ -21,6 +21,11 @@ func _get_configuration_warnings() -> PackedStringArray:
 	if drop_target == null:
 		results.push_back("'Drop Target' should be defined")
 	return results
+
+func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+	parent.set_meta(META, self)
 
 func _input(event: InputEvent) -> void:
 	if multiplayer.get_unique_id() != get_multiplayer_authority():
@@ -34,15 +39,23 @@ func _input(event: InputEvent) -> void:
 		item.used.emit(item, self)
 		item.item_resource.usage.use(item)
 
+func size() -> int:
+	return get_child_count()
+
+func add_item(item_resource: MdsItemResource) -> void:
+	var item_scene: PackedScene = load(item_resource.item_scene)
+	var item_node: Node = item_scene.instantiate()
+	add_child(item_node)
+
 func pick_item(node: Node3D) -> void:
-	if get_children().size() >= max_item:
+	if get_children().size() >= max_size:
 		push_warning("Can't pick item, inventory is full")
 		return
 	
 	if !node.has_meta(MdsItem3D.META):
 		push_error("Picked item should have a meta `mds_item_3d`")
 		return
-	
+
 	var item: MdsItem3D = node.get_meta(MdsItem3D.META)
 	item.item_timestamp = Time.get_unix_time_from_system()
 	item.inventory = self
