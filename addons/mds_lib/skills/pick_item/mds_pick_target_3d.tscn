@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpmqb23gadpum"]
+[gd_scene format=3 uid="uid://bpmqb23gadpum"]
 
 [ext_resource type="Script" uid="uid://ckjm2lcfiet0h" path="res://addons/mds_lib/skills/pick_item/mds_pick_target_3d.gd" id="1_30kh7"]
-[ext_resource type="Shape3D" uid="uid://b5k28rt8gt0hp" path="res://addons/mds_lib/skills/interact/mds_interact_target_3d_default_shape.tres" id="2_h73gk"]
+[ext_resource type="Shape3D" uid="uid://b5k28rt8gt0hp" path="res://addons/mds_lib/interactable_3d/interactable_3d_default_shape.tres" id="2_h73gk"]
 
 [node name="MdsPickTarget3D" type="Area3D"]
 collision_layer = 1073741824
