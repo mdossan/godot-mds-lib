@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c2234t62dmne2"]
+
+[ext_resource type="Script" uid="uid://bug6od6p0x2j7" path="res://addons/mds_lib/camera_control_3d/camera_control_3d.gd" id="1_7rsna"]
+
+[node name="CameraControl3D" type="Node3D" unique_id=82876333]
+script = ExtResource("1_7rsna")
