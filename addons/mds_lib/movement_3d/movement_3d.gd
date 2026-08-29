@@ -1,5 +1,7 @@
 class_name MdsMovement3D extends Node3D
 
+static var META: String = "mds_movement_3d"
+
 signal direction_changed(x: float, y: float, z: float)
 
 @export var parent: CharacterBody3D
@@ -17,6 +19,9 @@ var backward_input: float = 0.0
 var forward_input: float = 0.0
 var right_input: float = 0.0
 var left_input: float = 0.0
+
+func _ready() -> void:
+	parent.set_meta(META, self)
 
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
