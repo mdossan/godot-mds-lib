@@ -1,7 +1,9 @@
-class_name MdsCamera3DShakerBehavior extends Node3D
+class_name MdsCameraShaker3D extends Node3D
 
-static var GROUP: String = "mds_camera_3d_shaker_behavior"
+static var META: String = "mds_camera_shaker_3d"
+static var GROUP: String = "mds_camera_shaker_3d"
 
+@export var parent: Node3D
 @export var target_camera: Camera3D
 @export var offset_x: float = 0.0
 @export var offset_y: float = 0.0
@@ -10,6 +12,7 @@ static var GROUP: String = "mds_camera_3d_shaker_behavior"
 @export var is_shaking: bool = false
 
 func _ready() -> void:
+	parent.set_meta(META, self)
 	add_to_group(GROUP)
 
 func _physics_process(_delta: float) -> void:
