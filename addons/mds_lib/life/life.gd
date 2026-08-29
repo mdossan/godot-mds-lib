@@ -2,13 +2,17 @@ class_name MdsLife extends Node
 
 static var META = "mds_life"
 
+signal life_changed(new_life: float)
 signal damage_taken(amount: float, remaining_life: float)
 signal heal_received(amount: float, remaining_life: float)
 signal dead()
 
 @export var parent: Node
 @export var max_life: float = 100.0
-@export var life: float = 100.0
+@export var life: float = 100.0:
+	set(new_life):
+		life = new_life
+		life_changed.emit(life)
 
 func _ready() -> void:
 	parent.set_meta(META, self)
