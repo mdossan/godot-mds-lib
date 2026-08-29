@@ -1,5 +1,4 @@
-class_name MdsInteractCustom
-extends MdsAbstractInteraction
+class_name MdsInteractCustom extends MdsInteraction
 
 signal interacting(actor: Node)
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://brwparhia4xsi"]
+[gd_scene format=3 uid="uid://brwparhia4xsi"]
 
 [ext_resource type="Script" uid="uid://db8h51mis80aj" path="res://addons/mds_lib/interaction/mds_interaction_custom.gd" id="1_ryeq4"]
 
-[node name="MdsInteractionCustom" type="Node"]
+[node name="MdsInteractionCustom" type="Node" unique_id=1317606721]
 script = ExtResource("1_ryeq4")
