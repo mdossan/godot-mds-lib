@@ -12,7 +12,8 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var down_direction: Vector3 = -character_body_3d.global_basis.y
-	character_body_3d.velocity += down_direction * gravity_force
+	character_body_3d.velocity = down_direction * gravity_force
+	character_body_3d.move_and_slide()
 
 func activate() -> void:
 	disabled = false
