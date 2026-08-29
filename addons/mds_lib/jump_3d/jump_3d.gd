@@ -1,5 +1,7 @@
 class_name MdsJump3D extends Node3D
 
+static var META: String = "mds_jump_3d"
+
 signal jump_started
 signal jump_ended
 
@@ -17,6 +19,9 @@ var jump_time: float = 0.0
 var jump_last_sample: float = 0.0
 var jump_release_offset: float = 1.0
 var jump_release_time: float = 1.0
+
+func _ready() -> void:
+	target_character_body_3d.set_meta(META, self)
 
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
