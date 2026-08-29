@@ -1,13 +1,11 @@
-@tool
-class_name MdsItem3D
-extends Node3D
+class_name MdsItem3D extends Node3D
 
 static var META = "mds_item_3d"
 
 signal picked()
 signal dropped()
-signal dropped_from_inventory(inventory: MdsInventoryBehavior3D)
-signal used(item: MdsItem3D, inventory: MdsInventoryBehavior3D)
+signal dropped_from_inventory(inventory: MdsInventory3D)
+signal used(item: MdsItem3D, inventory: MdsInventory3D)
 
 @export var parent: Node3D
 @export var item_resource: MdsItemResource:
@@ -16,7 +14,7 @@ signal used(item: MdsItem3D, inventory: MdsInventoryBehavior3D)
 		#if item_resource:
 			#%Mesh.mesh = item_resource.mesh
 		update_configuration_warnings()
-@export var inventory: MdsInventoryBehavior3D: set = set_inventory
+@export var inventory: MdsInventory3D: set = set_inventory
 
 var item_unique_id: int = ResourceUID.create_id()
 var item_timestamp: float = Time.get_unix_time_from_system()
@@ -26,6 +24,7 @@ var item_timestamp: float = Time.get_unix_time_from_system()
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
+
 	add_to_group(META)
 	if parent:
 		parent.set_meta(META, self)
@@ -34,7 +33,7 @@ func _ready() -> void:
 
 #endregion
 
-func set_inventory(new_inventory: MdsInventoryBehavior3D):
+func set_inventory(new_inventory: MdsInventory3D):
 	inventory = new_inventory
 	if is_multiplayer_authority():
 		remote_set_inventory.rpc(new_inventory.get_path())

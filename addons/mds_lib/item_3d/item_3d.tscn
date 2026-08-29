@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://clvw56c7eb8y0"]
 
-[ext_resource type="Script" uid="uid://bfr5dkq083k02" path="res://addons/mds_lib/item/mds_item_3d.gd" id="1_npwxx"]
+[ext_resource type="Script" uid="uid://bfr5dkq083k02" path="res://addons/mds_lib/item_3d/item_3d.gd" id="1_npwxx"]
 [ext_resource type="PackedScene" uid="uid://bpmqb23gadpum" path="res://addons/mds_lib/skills/pick_item/mds_pick_target_3d.tscn" id="2_gfhe8"]
 
-[node name="MdsItem3D" type="Node3D" unique_id=1657311738]
+[node name="Item3D" type="Node3D" unique_id=1657311738]
 script = ExtResource("1_npwxx")
 
 [node name="MdsPickTarget3D" parent="." unique_id=1990829581 node_paths=PackedStringArray("parent") instance=ExtResource("2_gfhe8")]
