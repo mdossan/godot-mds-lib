@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://drtoo3begk1xd"]
 
-[ext_resource type="Script" uid="uid://dgs88i4hbnjvy" path="res://addons/mds_lib/movement_3d/movement_3d.gd" id="1_f38i8"]
-[ext_resource type="Script" uid="uid://ckkguvkpx3yrx" path="res://addons/mds_lib/skills/jump/mds_jump_skill_3d.gd" id="2_uqocf"]
+[ext_resource type="PackedScene" uid="uid://cshbyiyy1bjh" path="res://addons/mds_lib/jump_3d/jump_3d.tscn" id="1_bw2xn"]
+[ext_resource type="PackedScene" uid="uid://iogt3j27eyfc" path="res://addons/mds_lib/movement_3d/movement_3d.tscn" id="2_wfa6s"]
 [ext_resource type="Script" uid="uid://bug6od6p0x2j7" path="res://addons/mds_lib/skills/camera_control/mds_camera_control_skill_3d.gd" id="3_uqocf"]
-[ext_resource type="Script" uid="uid://cdwf7sm71s6tu" path="res://addons/mds_lib/behaviors/apply_velocity_behavior_3d/mds_apply_velocity_behavior_3d.gd" id="4_bw2xn"]
 [ext_resource type="Script" uid="uid://beis7scpne5jy" path="res://addons/mds_lib/behaviors/mds_gravity_behavior_3d/mds_gravity_behavior_3d.gd" id="4_wfa6s"]
-[ext_resource type="Script" uid="uid://btbhqb811xlf8" path="res://addons/mds_lib/behaviors/mds_velocity_reset_behavior_3d/mds_velocity_reset_behavior_3d.gd" id="6_gl3vl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c0rew"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kfal5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_27qor"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -19,21 +21,31 @@ background_mode = 2
 sky = SubResource("Sky_ckcjp")
 tonemap_mode = 2
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c0rew"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_kfal5"]
-
 [node name="SandboxThirdPersonPlayer" type="Node3D" unique_id=657356223]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2022768222]
-environment = SubResource("Environment_xo3tf")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1615973149]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=690348265]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Jump3D" parent="CharacterBody3D" unique_id=455328140 node_paths=PackedStringArray("target_character_body_3d") instance=ExtResource("1_bw2xn")]
+target_character_body_3d = NodePath("..")
+jump_force = 800.0
+
+[node name="Movement3D" parent="CharacterBody3D" unique_id=266879850 node_paths=PackedStringArray("parent") instance=ExtResource("2_wfa6s")]
+parent = NodePath("..")
+
+[node name="MdsGravityBehavior3D" type="Node3D" parent="CharacterBody3D" unique_id=228822762 node_paths=PackedStringArray("character_body_3d")]
+script = ExtResource("4_wfa6s")
+character_body_3d = NodePath("..")
+metadata/_custom_type_script = "uid://beis7scpne5jy"
+
+[node name="MdsCameraControlSkill3D" type="Node3D" parent="CharacterBody3D" unique_id=2076005990 node_paths=PackedStringArray("node_vertical", "node_horizontal")]
+script = ExtResource("3_uqocf")
+node_vertical = NodePath(".")
+node_horizontal = NodePath("..")
+metadata/_custom_type_script = "uid://bug6od6p0x2j7"
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/MdsCameraControlSkill3D" unique_id=189679287]
+transform = Transform3D(1, 0, 0, 0, 0.9995, 0.0316201, 0, -0.0316201, 0.9995, 0.15747404, 1.5766172, 3.721517)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=265924953]
 shape = SubResource("CapsuleShape3D_c0rew")
@@ -41,50 +53,16 @@ shape = SubResource("CapsuleShape3D_c0rew")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=245431793]
 mesh = SubResource("CapsuleMesh_kfal5")
 
-[node name="CameraPivotPoint" type="Node3D" parent="CharacterBody3D" unique_id=999400327]
+[node name="World" type="Node3D" parent="." unique_id=720390641]
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/CameraPivotPoint" unique_id=189679287]
-transform = Transform3D(1, 0, 0, 0, 0.9995, 0.0316201, 0, -0.0316201, 0.9995, 0.15747404, 1.5766172, 3.721517)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World" unique_id=2022768222]
+environment = SubResource("Environment_xo3tf")
 
-[node name="VelocityResetBehavior3D" type="Node3D" parent="CharacterBody3D" unique_id=1693783866 node_paths=PackedStringArray("character_body_3d")]
-script = ExtResource("6_gl3vl")
-character_body_3d = NodePath("..")
-metadata/_custom_type_script = "uid://btbhqb811xlf8"
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=1615973149]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
 
-[node name="Skills" type="Node3D" parent="CharacterBody3D" unique_id=675002083]
-
-[node name="MdsMovementSkill3D" type="Node3D" parent="CharacterBody3D/Skills" unique_id=893578107 node_paths=PackedStringArray("parent")]
-script = ExtResource("1_f38i8")
-parent = NodePath("../..")
-metadata/_custom_type_script = "uid://dgs88i4hbnjvy"
-
-[node name="MdsJumpSkill3D" type="Node3D" parent="CharacterBody3D/Skills" unique_id=1983182406 node_paths=PackedStringArray("target_character_body_3d")]
-script = ExtResource("2_uqocf")
-target_character_body_3d = NodePath("../..")
-metadata/_custom_type_script = "uid://ckkguvkpx3yrx"
-
-[node name="MdsCameraControlSkill3D" type="Node3D" parent="CharacterBody3D/Skills" unique_id=2076005990 node_paths=PackedStringArray("node_vertical", "node_horizontal")]
-script = ExtResource("3_uqocf")
-node_vertical = NodePath("../../CameraPivotPoint")
-node_horizontal = NodePath("../..")
-metadata/_custom_type_script = "uid://bug6od6p0x2j7"
-
-[node name="Behaviors" type="Node3D" parent="CharacterBody3D" unique_id=1463954957]
-
-[node name="MdsGravityBehavior3D" type="Node3D" parent="CharacterBody3D/Behaviors" unique_id=228822762 node_paths=PackedStringArray("character_body_3d")]
-script = ExtResource("4_wfa6s")
-character_body_3d = NodePath("../..")
-metadata/_custom_type_script = "uid://beis7scpne5jy"
-
-[node name="MdsApplyVelocityBehavior3D" type="Node3D" parent="CharacterBody3D/Behaviors" unique_id=776184316 node_paths=PackedStringArray("character_body_3d")]
-script = ExtResource("4_bw2xn")
-character_body_3d = NodePath("../..")
-metadata/_custom_type_script = "uid://cdwf7sm71s6tu"
-
-[node name="Floor" type="CSGBox3D" parent="." unique_id=673424785]
+[node name="Floor" type="CSGBox3D" parent="World" unique_id=673424785]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 use_collision = true
 size = Vector3(100, 1, 100)
-
-[connection signal="jump_ended" from="CharacterBody3D/Skills/MdsJumpSkill3D" to="CharacterBody3D/Behaviors/MdsGravityBehavior3D" method="activate"]
-[connection signal="jump_started" from="CharacterBody3D/Skills/MdsJumpSkill3D" to="CharacterBody3D/Behaviors/MdsGravityBehavior3D" method="disable"]
