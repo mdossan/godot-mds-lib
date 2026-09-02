@@ -26,7 +26,7 @@ func _input(event: InputEvent) -> void:
 	
 	if event is InputEventMouseMotion:
 		current_rot.x = (current_rot.x - event.relative.x)
-		current_rot.y = clamp(current_rot.y - event.relative.y, -120, 120)
+		current_rot.y = clamp(current_rot.y - event.relative.y, -180, 180)
 	
 	if event.is_action_pressed("zoom"):
 		var tween: Tween = create_tween()
@@ -39,5 +39,6 @@ func _process(delta: float) -> void:
 	if get_multiplayer_authority() != multiplayer.get_unique_id():
 		return
 	
-	node_vertical.rotation.x = deg_to_rad(current_rot.y) * sensitivity
-	node_horizontal.rotation.y = deg_to_rad(current_rot.x) * sensitivity
+	node_vertical.rotation.x += deg_to_rad(current_rot.y) * sensitivity
+	node_horizontal.rotation.y += deg_to_rad(current_rot.x) * sensitivity
+	current_rot = Vector2.ZERO
