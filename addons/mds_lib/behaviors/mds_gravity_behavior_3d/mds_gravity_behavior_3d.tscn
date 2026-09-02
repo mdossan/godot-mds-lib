@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bml6cq4pw8cri"]
-
-[ext_resource type="Script" uid="uid://beis7scpne5jy" path="res://addons/mds_lib/behaviors/mds_gravity_behavior_3d/mds_gravity_behavior_3d.gd" id="1_o43yx"]
-
-[node name="MdsGravityBehavior3D" type="Node3D" unique_id=1991115360]
-script = ExtResource("1_o43yx")
