@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cobtkr1ywvl8l"]
 
 [ext_resource type="Script" uid="uid://bqll3fqjmr547" path="res://tests/skills/camera_control/test_camera_control.gd" id="1_qj7q5"]
-[ext_resource type="PackedScene" uid="uid://c2234t62dmne2" path="res://addons/mds_lib/skills/camera_control/mds_camera_control_skill_3d.tscn" id="2_wb8ic"]
+[ext_resource type="PackedScene" uid="uid://c2234t62dmne2" path="res://addons/mds_lib/camera_control_3d/camera_control_3d.tscn" id="2_wb8ic"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qj7q5"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -35,9 +35,11 @@ shadow_enabled = true
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1397758676]
 
-[node name="CameraControl" parent="CharacterBody3D" unique_id=82876333 node_paths=PackedStringArray("node_vertical", "node_horizontal") instance=ExtResource("2_wb8ic")]
-node_vertical = NodePath("../CameraMount")
+[node name="CameraControl" parent="CharacterBody3D" unique_id=82876333 node_paths=PackedStringArray("parent", "node_horizontal", "node_vertical", "camera_3d") instance=ExtResource("2_wb8ic")]
+parent = NodePath("..")
 node_horizontal = NodePath("../CameraMount")
+node_vertical = NodePath("../CameraMount")
+camera_3d = NodePath("../CameraMount/Camera3D")
 
 [node name="CameraMount" type="Node3D" parent="CharacterBody3D" unique_id=365042384]
 
