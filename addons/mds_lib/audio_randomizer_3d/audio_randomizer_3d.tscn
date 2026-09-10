@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ctg5uyxvvgic8"]
+
+[ext_resource type="Script" uid="uid://c5vcyfktr3tnv" path="res://addons/mds_lib/audio_randomizer_3d/audio_randomizer_3d.gd" id="1_y6x45"]
+
+[node name="AudioRandomizer3d" type="AudioStreamPlayer3D" unique_id=1503912640]
+script = ExtResource("1_y6x45")
