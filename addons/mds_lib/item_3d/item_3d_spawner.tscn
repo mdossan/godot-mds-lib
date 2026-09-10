@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://lmerwlwbcvtr"]
+
+[ext_resource type="Script" uid="uid://dbhw1ly1y58s4" path="res://addons/mds_lib/item_3d/item_3d_spawner.gd" id="1_tice5"]
+
+[node name="MdsItem3dSpawner" type="MultiplayerSpawner" unique_id=657536323]
+script = ExtResource("1_tice5")

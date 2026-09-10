@@ -3,7 +3,7 @@ extends MultiplayerSpawner
 
 @export var items: MdsItemsResource
 
-var item_scene: PackedScene = preload("res://addons/mds_lib/item/mds_item_3d.tscn")
+var item_scene: PackedScene = preload("res://addons/mds_lib/item_3d/item_3d.tscn")
 
 func _enter_tree() -> void:
 	spawn_function = _custom_spawn
