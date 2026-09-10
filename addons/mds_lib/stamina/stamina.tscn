@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cmywqmh8nnotr"]
 
-[ext_resource type="Script" uid="uid://ccpo0srvevk2i" path="res://addons/mds_lib/behaviors/stamina/mds_stamina_behavior.gd" id="1_irkur"]
+[ext_resource type="Script" uid="uid://ccpo0srvevk2i" path="res://addons/mds_lib/stamina/stamina.gd" id="1_irkur"]
 
-[node name="MdsStaminaBehavior" type="Node" unique_id=845257924]
+[node name="Stamina" type="Node" unique_id=845257924]
 script = ExtResource("1_irkur")
 
 [node name="Timer" type="Timer" parent="." unique_id=293850004]
