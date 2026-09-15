@@ -1,5 +1,4 @@
-class_name MdsStaminaUseInteraction
-extends MdsAbstractInteraction
+class_name MdsStaminaUseInteraction extends MdsInteraction
 
 @export var amount: float = 10.0
 @export var interaction_label: String = "Use Stamina"
@@ -12,5 +11,5 @@ func execute_interaction(actor: Node):
 		push_error("Actor %s does not have a MdsStaminaLogic reference" % actor)
 		return;
 	
-	var stamina_node: MdsStaminaBehavior = actor.get_meta("mds_stamina_logic")
+	var stamina_node: MdsStamina = actor.get_meta(MdsStamina.META)
 	stamina_node.consume_stamina(amount)
