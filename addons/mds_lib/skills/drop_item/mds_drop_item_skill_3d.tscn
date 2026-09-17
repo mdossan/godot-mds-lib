@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bicbbpenr3ybk"]
+[gd_scene format=3 uid="uid://bicbbpenr3ybk"]
 
 [ext_resource type="Script" uid="uid://l8q5u46ya4sw" path="res://addons/mds_lib/skills/drop_item/mds_drop_item_skill_3d.gd" id="1_md0d1"]
 
-[node name="MdsDropSkill3D" type="Node3D"]
+[node name="MdsDropSkill3D" type="Node3D" unique_id=1925356031]
 script = ExtResource("1_md0d1")

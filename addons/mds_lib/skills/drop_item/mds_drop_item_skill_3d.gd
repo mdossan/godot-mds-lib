@@ -6,7 +6,7 @@ signal dropped
 
 @export var parent: Node3D
 @export var item_to_drop: MdsItem3D
-@export var mds_inventory: MdsInventoryBehavior3D
+@export var mds_inventory: MdsInventory3D
 
 func _input(event: InputEvent):
 	if get_multiplayer_authority() != multiplayer.get_unique_id():
